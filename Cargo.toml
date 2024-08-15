@@ -1,0 +1,5 @@
+[workspace]
+members = [
+  "syntaxhighlighter"
+]
+resolver = "2"
