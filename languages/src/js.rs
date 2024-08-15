@@ -7,13 +7,53 @@ impl LanguageTokenizer for JavaScriptTokenizer {
     fn tokenizer(&self) -> Tokenizer {
         Tokenizer::new(vec![
             TokenPattern {
+                matcher: PatternMatcher::match_comment,
+            },
+            TokenPattern {
                 matcher: PatternMatcher::match_whitespace,
             },
             TokenPattern {
                 matcher: |chars| {
                     PatternMatcher::match_identifier_or_keyword(
                         chars,
-                        &vec!["function", "let", "var", "const", "if", "else", "return"],
+                        &vec![
+                            "break",
+                            "case",
+                            "catch",
+                            "class",
+                            "const",
+                            "continue",
+                            "debugger",
+                            "default",
+                            "delete",
+                            "do",
+                            "else",
+                            "export",
+                            "extends",
+                            "finally",
+                            "for",
+                            "function",
+                            "if",
+                            "import",
+                            "in",
+                            "instanceof",
+                            "let",
+                            "new",
+                            "return",
+                            "super",
+                            "switch",
+                            "this",
+                            "throw",
+                            "try",
+                            "typeof",
+                            "var",
+                            "void",
+                            "while",
+                            "with",
+                            "yield",
+                            "async",
+                            "await",
+                        ],
                     )
                 },
             },
@@ -24,7 +64,11 @@ impl LanguageTokenizer for JavaScriptTokenizer {
                 matcher: |chars| {
                     PatternMatcher::match_operator(
                         chars,
-                        &vec!['+', '-', '*', '/', '=', '!', '<', '>'],
+                        &vec![
+                            "+", "-", "*", "/", "%", "=", "==", "===", "!=", "!==", ">", "<", ">=",
+                            "<=", "&&", "||", "!", "??", "?.", "&", "|", "^", "~", "<<", ">>",
+                            ">>>", "+=", "-=", "*=", "/=", "%=", "++", "--", "=>",
+                        ],
                     )
                 },
             },
@@ -32,9 +76,12 @@ impl LanguageTokenizer for JavaScriptTokenizer {
                 matcher: |chars| {
                     PatternMatcher::match_punctuation(
                         chars,
-                        &vec![';', ',', '.', '(', ')', '{', '}'],
+                        &vec![';', ',', '.', '(', ')', '{', '}', '[', ']', ':', '?'],
                     )
                 },
+            },
+            TokenPattern {
+                matcher: PatternMatcher::match_string_literal,
             },
         ])
     }
