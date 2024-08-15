@@ -1,5 +1,7 @@
 [workspace]
 members = [
-  "syntaxhighlighter"
+  "syntaxhighlighter",
+  "languages",
+  "app",
 ]
 resolver = "2"

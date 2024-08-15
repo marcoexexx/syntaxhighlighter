@@ -3,5 +3,20 @@
 version = 3
 
 [[package]]
+name = "app"
+version = "0.1.0"
+dependencies = [
+ "languages",
+ "syntaxhighlighter",
+]
+
+[[package]]
+name = "languages"
+version = "0.1.0"
+dependencies = [
+ "syntaxhighlighter",
+]
+
+[[package]]
 name = "syntaxhighlighter"
 version = "0.1.0"
