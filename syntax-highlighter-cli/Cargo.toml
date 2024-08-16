@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+highlight = { version = "0.1.0", path = "../highlight" }
 languages = { version = "0.1.0", path = "../languages" }
-syntaxhighlighter = { version = "0.1.0", path = "../syntaxhighlighter" }
+tokenizer = { version = "0.1.0", path = "../tokenizer" }

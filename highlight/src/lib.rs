@@ -1,5 +1,5 @@
-use crate::token::Token;
-use crate::tokenizer::LanguageTokenizer;
+use tokenizer::token::Token;
+use tokenizer::tokenizer::LanguageTokenizer;
 
 pub struct Highlighter {
     language: Box<dyn LanguageTokenizer>,
@@ -14,3 +14,4 @@ impl Highlighter {
         self.language.tokenizer().tokenize(code)
     }
 }
+

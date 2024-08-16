@@ -6,17 +6,25 @@ version = 3
 name = "app"
 version = "0.1.0"
 dependencies = [
+ "highlight",
  "languages",
- "syntaxhighlighter",
+ "tokenizer",
+]
+
+[[package]]
+name = "highlight"
+version = "0.1.0"
+dependencies = [
+ "tokenizer",
 ]
 
 [[package]]
 name = "languages"
 version = "0.1.0"
 dependencies = [
- "syntaxhighlighter",
+ "tokenizer",
 ]
 
 [[package]]
-name = "syntaxhighlighter"
+name = "tokenizer"
 version = "0.1.0"

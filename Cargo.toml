@@ -1,7 +1,8 @@
 [workspace]
 members = [
-  "syntaxhighlighter",
+  "tokenizer",
   "languages",
-  "app",
+  "syntax-highlighter-cli",
+  "highlight"
 ]
 resolver = "2"

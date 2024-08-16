@@ -1,5 +1,5 @@
-use syntaxhighlighter::matcher::PatternMatcher;
-use syntaxhighlighter::tokenizer::{LanguageTokenizer, TokenPattern, Tokenizer};
+use tokenizer::matcher::PatternMatcher;
+use tokenizer::tokenizer::{LanguageTokenizer, TokenPattern, Tokenizer};
 
 pub struct JavaScriptTokenizer;
 
