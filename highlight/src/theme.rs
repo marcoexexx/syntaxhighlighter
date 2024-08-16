@@ -47,10 +47,10 @@ impl ApplyTheme for Token {
             Self::Identifier(ident) => {
                 self.apply_theme(&theme.identifier.to_ansi(true), ident, code)
             }
-            // Self::FunctionName(ident) => {
-            //     self.apply_theme(&theme.function_name.to_ansi(true), ident, code)
-            // }
-            Self::Number(ident) => self.apply_theme(&theme.number.to_ansi(true), ident, code),
+            Self::FunctionName(ident) => {
+                self.apply_theme(&theme.function_name.to_ansi(true), ident, code)
+            }
+            // Self::Number(ident) => self.apply_theme(&theme.number.to_ansi(true), ident, code),
             Self::StringLiteral(ident) => {
                 self.apply_theme(&theme.string_literal.to_ansi(true), ident, code)
             }
