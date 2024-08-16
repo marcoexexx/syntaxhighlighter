@@ -1,1 +1,3 @@
-pub mod gruvbox;
+pub use gruvbox::gruvbox_theme;
+
+mod gruvbox;

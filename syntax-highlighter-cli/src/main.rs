@@ -1,4 +1,4 @@
-use highlight::{theme::ApplyTheme, themes::gruvbox::gruvbox_theme, Highlighter};
+use highlight::{theme::ApplyTheme, themes::gruvbox_theme, Highlighter};
 use languages::js::JavaScriptTokenizer;
 
 const JS_CODE_EXAMPLE: &str = r#"
