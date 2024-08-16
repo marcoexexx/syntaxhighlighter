@@ -1,4 +1,4 @@
-use highlight::Highlighter;
+use highlight::{theme::ApplyTheme, themes::gruvbox::gruvbox_theme, Highlighter};
 use languages::js::JavaScriptTokenizer;
 
 const JS_CODE_EXAMPLE: &str = r#"
@@ -25,9 +25,16 @@ function main() {
 "#;
 
 fn main() {
-    let js_highlighter = Highlighter::new(Box::new(JavaScriptTokenizer));
+    let theme = gruvbox_theme();
+    let js_highlighter = Highlighter::new(JS_CODE_EXAMPLE, Box::new(JavaScriptTokenizer));
 
-    let js_tokens = js_highlighter.highlight(JS_CODE_EXAMPLE);
+    let js_tokens = js_highlighter.highlight();
 
-    println!("{:#?}", js_tokens);
+    let mut highlighted = String::from(JS_CODE_EXAMPLE);
+
+    for token in js_tokens {
+        token.apply_theme_and_render(&theme, &mut highlighted);
+    }
+
+    println!("{}", highlighted)
 }

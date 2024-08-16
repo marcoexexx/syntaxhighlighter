@@ -5,6 +5,18 @@ use crate::token::Token;
 pub struct PatternMatcher;
 
 impl PatternMatcher {
+    fn consume_ansi_code(chars: &mut Peekable<std::str::Chars>) {
+        chars.next();
+
+        if let Some('[') = chars.next() {
+            while let Some(ch) = chars.next() {
+                if ch == 'm' {
+                    break;
+                }
+            }
+        }
+    }
+
     fn consume_while<F>(chars: &mut Peekable<std::str::Chars>, condition: F) -> String
     where
         F: Fn(char) -> bool,
@@ -12,6 +24,10 @@ impl PatternMatcher {
         let mut result = String::new();
 
         while let Some(&ch) = chars.peek() {
+            if ch == '\x1b' {
+                Self::consume_ansi_code(chars);
+            }
+
             if condition(ch) {
                 result.push(ch);
                 chars.next();
@@ -61,6 +77,7 @@ impl PatternMatcher {
             let number = Self::consume_while(chars, |c| c.is_digit(10));
             return Some(Token::Number(number));
         }
+
         None
     }
 

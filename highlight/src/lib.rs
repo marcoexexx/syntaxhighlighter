@@ -1,17 +1,20 @@
 use tokenizer::token::Token;
 use tokenizer::tokenizer::LanguageTokenizer;
 
-pub struct Highlighter {
-    language: Box<dyn LanguageTokenizer>,
+pub mod theme;
+pub mod themes;
+
+pub struct Highlighter<'a> {
+    pub code: &'a str,
+    pub language: Box<dyn LanguageTokenizer>,
 }
 
-impl Highlighter {
-    pub fn new(language: Box<dyn LanguageTokenizer>) -> Self {
-        Highlighter { language }
+impl<'a> Highlighter<'a> {
+    pub fn new(code: &'a str, language: Box<dyn LanguageTokenizer>) -> Self {
+        Highlighter { language, code }
     }
 
-    pub fn highlight(&self, code: &str) -> Vec<Token> {
-        self.language.tokenizer().tokenize(code)
+    pub fn highlight(&self) -> Vec<Token> {
+        self.language.tokenizer().tokenize(self.code)
     }
 }
-
